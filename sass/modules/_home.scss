@@ -1,0 +1,73 @@
+.weather-container{
+	height: 235px;
+	width: 351px;
+	margin: 200px auto;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	font-family: 'Open Sans', sans-serif;
+
+	.icon-widget{
+		height: 163px;
+		background-color: $Primary;
+
+
+		.icon-sun3{
+		font-size: 100px;
+		color: $Default;
+		margin-left: 10px;
+		line-height: 163px;
+		}
+	}
+	.temp-section{
+		background-color: lighten($Primary, 4%);
+		height: 163px;
+
+
+		h1{
+			color: $Default;
+			font-size: 75px;
+			padding-left: 0;
+			margin-top: 15px;
+
+			span{
+				margin-right: 50px;
+				font-size: 50px;
+			}
+		}
+		h4{
+			color: $Default;
+			font-size: 14px;
+			float: left;
+			line-height: 30px;
+			font-weight: lighter;
+
+		}
+	}
+
+	.loc-container{
+		height: 72px;
+		width: 100%;
+		float: left;
+	}
+	.loc-details{
+		padding-left: 0;
+
+
+		h1{
+			color: $DarkGray;
+			font-size: 16px;
+			margin: 15px 0;
+
+		}
+		h4{
+			color: $LightGray;
+			font-size: 15px;
+			line-height: 0px;
+
+		}
+	}
+	.loc-search{
+		padding-left: 0;
+
+		// THE REST OF THE SEARCH BAR CSS LOCATED INSIDE BASE FILE > BUTTONS
+	}
+}

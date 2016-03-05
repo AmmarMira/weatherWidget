@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 101 Template</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="css/font/style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/filters/revers.js"></script>
+
+</head>
+<body ng-app="app">
+
+
+    <div ng-controller="weather">
+
+        <div class="">
+            <input type="text" ng-model="address">
+            <a href="#" class="btn btn-primary" ng-click="getweather()">Get Weather</a>
+            <div class="data" ng-show="weather.cod == 200">
+                <p>Temp is: {{weather.main.temp}}</p>
+                <p>Icon is: {{weather.weather[0].icon}}</p>
+                <p>humidity is: {{weather.main.humidity}}</p>
+                <p>wind is: {{weather.wind.speed}}</p>
+                <p>city is: {{weather.name}}</p>
+                <p>description is: {{weather.weather[0].description}}</p>
+                <p>description is: {{weather.message}}</p>
+
+
+            </div>
+
+            <div class="load" ng-hide="weather.cod == 200">Loading Data...</div>
+        </div>
+
+
+        <div class="map" ng-show="weather.cod == 200">
+            <div class="weather-container">
+                <div class="icon-widget col-md-5 col-xs-5">
+                    <span class="icon-sun3"></span>
+                </div><!-- icon-widget -->
+                <div class="temp-section col-md-7 col-xs-7">
+                    <h1 class="col-md-12">14<span class="pull-right">°</span></h1>
+                    <h4 class="col-md-12">Humidity:<span class="pull-right">44%</span></h4>
+                    <h4 class="col-md-12">Wind Speed:<span class="pull-right">10 mph</span></h4>
+                </div><!-- temp-section -->
+                <div class="loc-container">
+                    <div class="loc-details col-md-6 col-xs-6">
+                        <h1 class="col-md-12">{{weather.name}}</h1>
+                        <h4 class="col-md-12">Sky is Clear</h4>
+                    </div><!-- loc-details -->
+                    <div class="loc-search col-md-6 col-xs-6">
+                        <form action="" class="search-form">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </form>
+                    </div><!-- loc-search -->
+                </div><!-- location container-->
+            </div><!-- weather-container -->
+        </div><!-- map -->
+
+
+
+
+
+
+
+
+
+    </div><!-- weather -->
+
+
+
+
+
+
+</body>
+</html>
