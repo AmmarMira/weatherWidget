@@ -1,73 +1,220 @@
-.weather-container{
-	height: 235px;
-	width: 351px;
-	margin: 200px auto;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+#map, body, html, .map-overlay{
+	width:100%;
+	height:100%;
+
+}
+#map, .map-overlay{
+	position: absolute;
+	z-index: -1;
+	top:0;
+	left:0;
+
+	&#map{
+		opacity: 0.2;
+	}
+}
+.map-overlay{
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	background: radial-gradient(ellipse at center,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+
+}
+body{
+	padding-top: 200px;
+}
+.weather-widget {
+	width: 350px;
+	height: 240px;
+	margin: 0 auto;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.0);
 	font-family: 'Open Sans', sans-serif;
+	overflow: hidden;
+	background: $Default;
 
-	.icon-widget{
-		height: 163px;
+	transition: all 0.3s;
+
+	.weather-icon-holder{
+		width: 140px;
+		height:160px;
 		background-color: $Primary;
-
-
-		.icon-sun3{
-		font-size: 100px;
-		color: $Default;
-		margin-left: 10px;
-		line-height: 163px;
-		}
-	}
-	.temp-section{
-		background-color: lighten($Primary, 4%);
-		height: 163px;
-
-
-		h1{
-			color: $Default;
-			font-size: 75px;
-			padding-left: 0;
-			margin-top: 15px;
-
-			span{
-				margin-right: 50px;
-				font-size: 50px;
-			}
-		}
-		h4{
-			color: $Default;
-			font-size: 14px;
-			float: left;
-			line-height: 30px;
-			font-weight: lighter;
-
-		}
-	}
-
-	.loc-container{
-		height: 72px;
-		width: 100%;
 		float: left;
+		text-align: center;
+		color: $Default;
+		position: relative;
+		left: -200px;
+		transition:all 0.5s;
+		[class^='icon-']{
+			font-size: 90px;
+			line-height: 160px;
+			text-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+		}
 	}
-	.loc-details{
-		padding-left: 0;
+	.weather-details {
+		color: $Default;
+		width: 210px;
+		height:160px;
+		float: left;
+		padding:20px 20px;
+		background: -moz-linear-gradient(45deg,  #34cced 0%, #4cddf6 100%);
+		background: -webkit-linear-gradient(45deg,  #34cced 0%,#4cddf6 100%);
+		background: linear-gradient(45deg,  #34cced 0%,#4cddf6 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34cced', endColorstr='#4cddf6',GradientType=1 );
+
+
+		position: relative;
+		right: -300px;
+		transition:all 0.5s;
+
+
 
 
 		h1{
-			color: $DarkGray;
-			font-size: 16px;
-			margin: 15px 0;
-
+			font-size: 70px;
+			line-height: 1;
+			padding: 0;
+			margin: 0;
+			margin-bottom: 10px;
 		}
-		h4{
-			color: $LightGray;
-			font-size: 15px;
-			line-height: 0px;
+		p{
+			font-size: 14px;
+			margin: 0;
+			padding: 0;
+			font-weight: 400;
+			span{
+				width: 60px;
+				float: right;
+			}
 
 		}
 	}
-	.loc-search{
-		padding-left: 0;
 
-		// THE REST OF THE SEARCH BAR CSS LOCATED INSIDE BASE FILE > BUTTONS
+	.loc-holder {
+		width: 100%;
+		height: 72px;
+		padding:20px;
+		overflow: hidden;
+		position: relative;
+		bottom: -300px;
+		transition: all 0.5s;
+
+
+		.loc-details{
+			float: left;
+			h1{
+				color: $DarkGray;
+				font-size: 16px;
+
+			}
+			p{
+				font-size:14px;
+				color: lighten($DarkGray, 10%);
+			}
+
+		}
+
+		.loc-search{
+			width:100%;
+			height: 72px;
+			position: absolute;
+			top:0;
+			left: 0;
+			form{
+				//display: none;
+				.form-group{
+					height:72px;
+					width:100%;
+					margin: 0;
+					padding: 0;
+					position: absolute;
+					top:-100px;
+					opacity:0;
+					transtion:all 0.3s;
+
+					&.active{
+						top:0;
+						opacity: 1;
+					}
+
+					input{
+						width:100%;
+						height:100%;
+						line-height: 72px;
+						border:none;
+						font-size: 16px;
+						font-weight: 300;
+						color: $Primary;
+						padding:39px 20px;
+					}
+				}
+				.search-btn, .close-btn{
+					position: absolute;
+					right:20px;
+					top:27px;
+					font-size:18px;
+					color: $Primary;
+					z-index:1;
+					transition:all 0.3s;
+					&:hover, &:active, &:focus{
+						text-decoration: none;
+						transform:scale(1.2);
+					}
+					&.close-btn{
+						right: 50px;
+						color: $DarkGray;
+					}
+				}
+			}
+
+		}
 	}
+}
+
+
+.ready{
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+	.weather-icon-holder{
+		left:0;
+	}
+	.weather-details{
+		right:0;
+	}
+	.loc-holder{
+		bottom: 0;
+	}
+}
+
+.loading{
+	width: 100%;
+	height:100%;
+	margin:auto;
+	padding:80px 130px;
+	text-align: center;
+	border-radius:10px;
+	p{
+		margin-top: 70px;
+		font-family: arial;
+		color: #777;
+	}
+	.circle{
+		width: 30px;
+		height: 30px;
+		border-radius:50%;
+		background: $Primary;
+		float: left;
+		animation:move .75s infinite;
+		&.circle2{
+			animation-delay:.15s;
+		}
+		&.circle2{
+			animation-delay:.15s;
+		}
+		&.circle3{
+			animation-delay:.25s;
+		}
+	}
+}
+@keyframes move{
+	0%,100%{transform:translateY(0) scale(1); background: #fff;}
+	50%{transform:translateY(20px) scale(0.5);background: $Primary;}
 }
